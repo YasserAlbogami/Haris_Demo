@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>حريص - التحقق من الملفات</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="images/haris-logo.png" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Gov Banner -->
+    <div class="gov-banner">
+      <img src="images/image.png" alt="شعار الحكومة السعودية" class="icon" />
+      <span>موقع تجريبي لنموذج حريص </span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <div class="nav-brand">
+        <img src="images/gastat-logo.png" alt="الهيئة العامة للإحصاء" />
+        <div class="separator"></div>
+        <img src="images/haris-logo.png" alt="حريص" style="height: 42px" />
+      </div>
+      <div class="nav-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="live-survey.html">إدخال مباشر</a>
+        <a href="batch-upload.html" class="active">التحقق من الملفات</a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="page-container">
+      <!-- Breadcrumb -->
+      <div class="breadcrumb">
+        <a href="index.html">الرئيسية</a>
+        <span>‹</span>
+        <span>التحقق من الملفات</span>
+      </div>
+
+      <h2 class="page-title">التحقق من الملفات</h2>
+
+      <!-- Upload Panel -->
+      <div class="panel" style="max-width: 700px; margin: 0 auto 32px">
+        <div class="panel-header">
+          <span>📊</span>
+          <span>رفع ملف CSV أو Excel</span>
+        </div>
+        <div class="panel-body">
+          <div class="upload-zone" id="uploadZone">
+            <div class="icon">📁</div>
+            <p>
+              اسحب ملف <strong>.csv</strong> أو <strong>.xlsx</strong> هنا أو
+              اضغط للاختيار
+            </p>
+            <div class="filename" id="fileName"></div>
+            <input
+              type="file"
+              id="fileInput"
+              accept=".csv,.xlsx"
+              style="display: none"
+            />
+          </div>
+          <div style="text-align: center; margin-top: 20px">
+            <button class="btn btn-primary" id="processBtn" disabled>
+              <span>🤖</span>
+              <span>معالجة عبر حريص</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spinner -->
+      <div class="spinner" id="spinner">
+        <div class="spinner-circle"></div>
+        <p style="color: var(--gastat-text-secondary)">
+          جاري معالجة الملف... يرجى الانتظار
+        </p>
+      </div>
+
+      <!-- Results Table -->
+      <div id="resultsSection" style="display: none">
+        <div class="panel">
+          <div class="panel-header">
+            <span>📋</span>
+            <span>نتائج التحقق</span>
+          </div>
+          <div class="panel-body" style="overflow-x: auto">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>الصف</th>
+                  <th>معرف السجل (f_m_id)</th>
+                  <th>درجة المخاطر</th>
+                  <th>المشكلات المكتشفة</th>
+                </tr>
+              </thead>
+              <tbody id="resultsBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      حريص &copy; 2025 — محرك التحقق الذكي من الاستبيانات | الهيئة العامة
+      للإحصاء
+    </div>
+
+    <script src="js/batch-upload.js"></script>
+  </body>
+</html>
