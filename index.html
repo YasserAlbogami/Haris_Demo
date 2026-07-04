@@ -3,7 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>حريص - محرك التحقق الذكي من الاستبيانات</title>
+    <script>
+      (function () {
+        var lang = localStorage.getItem("harisLang") || "ar";
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+      })();
+    </script>
+    <title data-i18n="meta.title.home">حريص - محرك التحقق الذكي من الاستبيانات</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
@@ -15,21 +22,22 @@
   <body>
     <!-- Gov Banner -->
     <div class="gov-banner">
-      <img src="images/image.png" alt="شعار الحكومة السعودية" class="icon" />
-      <span>موقع تجريبي لنموذج حريص </span>
+      <img src="images/image.png" alt="شعار الحكومة السعودية" class="icon" data-i18n-alt="banner.icon.alt" />
+      <span data-i18n="banner.text">موقع تجريبي لنموذج حريص </span>
     </div>
 
     <!-- Navigation -->
     <nav class="main-nav">
       <div class="nav-brand">
-        <img src="images/gastat-logo.png" alt="الهيئة العامة للإحصاء" />
+        <img src="images/gastat-logo.png" alt="الهيئة العامة للإحصاء" data-i18n-alt="nav.gastat.alt" />
         <div class="separator"></div>
-        <img src="images/haris-logo.png" alt="حريص" style="height: 42px" />
+        <img src="images/haris-logo.png" alt="حريص" style="height: 42px" data-i18n-alt="nav.haris.alt" />
       </div>
       <div class="nav-links">
-        <a href="index.html" class="active">الرئيسية</a>
-        <a href="live-survey.html">إدخال مباشر</a>
-        <a href="batch-upload.html">التحقق من الملفات</a>
+        <a href="index.html" class="active" data-i18n="nav.home">الرئيسية</a>
+        <a href="live-survey.html" data-i18n="nav.liveSurvey">إدخال مباشر</a>
+        <a href="batch-upload.html" data-i18n="nav.batchUpload">التحقق من الملفات</a>
+        <button type="button" id="langToggle" class="lang-toggle">English</button>
       </div>
     </nav>
 
@@ -38,11 +46,11 @@
       <!-- Hero -->
       <div class="hero">
         <div class="hero-logo">
-          <img src="images/haris-logo.png" alt="حريص" />
+          <img src="images/haris-logo.png" alt="حريص" data-i18n-alt="nav.haris.alt" />
         </div>
-        <h1>حريص</h1>
-        <p class="subtitle">محرك التحقق الذكي من الاستبيانات</p>
-        <p class="desc">
+        <h1 data-i18n="home.hero.title">حريص</h1>
+        <p class="subtitle" data-i18n="home.hero.subtitle">محرك التحقق الذكي من الاستبيانات</p>
+        <p class="desc" data-i18n="home.hero.desc">
           منصة ذكاء اصطناعي متقدمة للتحقق من صحة واتساق بيانات الاستبيانات
           الإحصائية بشكل آني ودفعي، مصممة لدعم جودة البيانات في الهيئة العامة
           للإحصاء.
@@ -53,25 +61,25 @@
       <div class="cards-grid">
         <a href="live-survey.html" class="card">
           <div class="card-icon">📝</div>
-          <h3>إدخال الاستمارة المباشر</h3>
-          <p>
+          <h3 data-i18n="home.card1.title">إدخال الاستمارة المباشر</h3>
+          <p data-i18n="home.card1.desc">
             تحقق فوري أثناء إدخال البيانات مع مراقبة مستمرة لمستوى المخاطر
             والتناقضات في الوقت الحقيقي.
           </p>
           <div class="arrow">
-            <span>ابدأ الآن</span>
+            <span data-i18n="home.card1.cta">ابدأ الآن</span>
             <span>←</span>
           </div>
         </a>
         <a href="batch-upload.html" class="card">
           <div class="card-icon">📊</div>
-          <h3>التحقق من الملفات</h3>
-          <p>
+          <h3 data-i18n="home.card2.title">التحقق من الملفات</h3>
+          <p data-i18n="home.card2.desc">
             رفع ملفات Excel ومعالجتها عبر نموذج حريص للكشف عن الأخطاء والتناقضات
             في البيانات.
           </p>
           <div class="arrow">
-            <span>رفع ملف</span>
+            <span data-i18n="home.card2.cta">رفع ملف</span>
             <span>←</span>
           </div>
         </a>
@@ -79,9 +87,11 @@
     </div>
 
     <!-- Footer -->
-    <div class="footer">
+    <div class="footer" data-i18n="footer.text">
       حريص &copy; 2025 — محرك التحقق الذكي من الاستبيانات | الهيئة العامة
       للإحصاء
     </div>
+
+    <script src="js/i18n.js"></script>
   </body>
 </html>

@@ -75,13 +75,13 @@ async function sendValidation() {
 
     // Alert box
     if (risk > 0.8) {
-      setAlert("critical", "🚨", "تحذير حرج — تناقضات عالية في البيانات");
+      setAlert("critical", "🚨", window.HarisI18n.t("liveSurvey.alert.critical"));
     } else if (risk > 0.5) {
-      setAlert("warning", "⚠️", "تحذير قوي — يوجد تناقضات محتملة");
+      setAlert("warning", "⚠️", window.HarisI18n.t("liveSurvey.alert.warningStrong"));
     } else if (risk > 0) {
-      setAlert("warning", "💡", "تحذير بسيط — تحقق من البيانات");
+      setAlert("warning", "💡", window.HarisI18n.t("liveSurvey.alert.warningMild"));
     } else {
-      setAlert("success", "✅", "البيانات متسقة — لا توجد مشكلات");
+      setAlert("success", "✅", window.HarisI18n.t("liveSurvey.alert.success"));
     }
 
     // Show issues if any
@@ -105,7 +105,7 @@ async function sendValidation() {
     latencyEl.textContent = "—";
     riskEl.textContent = "—";
     riskEl.style.color = "";
-    setAlert("critical", "❌", "خطأ في الاتصال بالخادم");
+    setAlert("critical", "❌", window.HarisI18n.t("liveSurvey.alert.connError"));
     detailsSection.style.display = "none";
   }
 }
