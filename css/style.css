@@ -42,6 +42,9 @@ body {
   direction: rtl;
   min-height: 100vh;
 }
+html[dir="ltr"] body {
+  direction: ltr;
+}
 
 /* ===== Top Gov Banner ===== */
 .gov-banner {
@@ -107,6 +110,23 @@ body {
   background: var(--gastat-gray-100);
 }
 .nav-links a.active {
+  background: var(--gastat-green);
+  color: var(--gastat-white);
+}
+.lang-toggle {
+  margin-inline-start: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--gastat-green);
+  background: transparent;
+  color: var(--gastat-green);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.lang-toggle:hover {
   background: var(--gastat-green);
   color: var(--gastat-white);
 }
@@ -284,6 +304,11 @@ body {
   background: var(--gastat-white);
   transition: var(--transition);
   direction: rtl;
+}
+html[dir="ltr"] .form-group input,
+html[dir="ltr"] .form-group select,
+html[dir="ltr"] .form-group textarea {
+  direction: ltr;
 }
 .form-group input:focus,
 .form-group select:focus {
@@ -613,6 +638,9 @@ body {
   font-weight: 600;
   font-size: 0.85rem;
   text-align: right;
+}
+html[dir="ltr"] .data-table th {
+  text-align: left;
 }
 .data-table td {
   padding: 12px 16px;

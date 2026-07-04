@@ -39,7 +39,7 @@ function handleFile(file) {
   const validExtensions = [".xlsx", ".csv"];
   const lowerName = file.name.toLowerCase();
   if (!validExtensions.some((extension) => lowerName.endsWith(extension))) {
-    alert("يرجى رفع ملف بصيغة .csv أو .xlsx فقط");
+    alert(window.HarisI18n.t("batchUpload.err.invalidFile"));
     return;
   }
   selectedFile = file;
@@ -67,14 +67,14 @@ processBtn.addEventListener("click", async () => {
     const data = await res.json();
 
     if (!res.ok) {
-      const message = data.detail || data.message || "فشل التحقق من الملف";
+      const message = data.detail || data.message || window.HarisI18n.t("batchUpload.err.processFailed");
       alert(message);
       return;
     }
 
     renderResults(data.results || []);
   } catch (err) {
-    alert("خطأ في الاتصال بالخادم. تأكد من تشغيل الخادم على المنفذ 8000.");
+    alert(window.HarisI18n.t("batchUpload.err.serverConn"));
   } finally {
     spinner.classList.remove("active");
     processBtn.disabled = false;
@@ -84,7 +84,7 @@ processBtn.addEventListener("click", async () => {
 function renderResults(results) {
   if (!Array.isArray(results) || results.length === 0) {
     resultsBody.innerHTML =
-      '<tr><td colspan="4" style="text-align:center; padding:24px; color:var(--gastat-gray-500);">لا توجد نتائج</td></tr>';
+      `<tr><td colspan="4" style="text-align:center; padding:24px; color:var(--gastat-gray-500);">${window.HarisI18n.t("batchUpload.results.none")}</td></tr>`;
     resultsSection.style.display = "block";
     return;
   }
@@ -109,7 +109,7 @@ function renderResults(results) {
                     `<li> ${x.description}<br><em style="color: #666;">💡 ${x.suggestion}</em></li>`
                 )
                 .join("")}</ul>`
-            : '<span style="color: var(--risk-low);">✅ لا توجد مشكلات</span>'
+            : `<span style="color: var(--risk-low);">${window.HarisI18n.t("batchUpload.results.noIssues")}</span>`
         }
       </td>
     </tr>`;

@@ -3,7 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>حريص - التحقق من الملفات</title>
+    <script>
+      (function () {
+        var lang = localStorage.getItem("harisLang") || "ar";
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+      })();
+    </script>
+    <title data-i18n="meta.title.batchUpload">حريص - التحقق من الملفات</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
@@ -15,21 +22,22 @@
   <body>
     <!-- Gov Banner -->
     <div class="gov-banner">
-      <img src="images/image.png" alt="شعار الحكومة السعودية" class="icon" />
-      <span>موقع تجريبي لنموذج حريص </span>
+      <img src="images/image.png" alt="شعار الحكومة السعودية" class="icon" data-i18n-alt="banner.icon.alt" />
+      <span data-i18n="banner.text">موقع تجريبي لنموذج حريص </span>
     </div>
 
     <!-- Navigation -->
     <nav class="main-nav">
       <div class="nav-brand">
-        <img src="images/gastat-logo.png" alt="الهيئة العامة للإحصاء" />
+        <img src="images/gastat-logo.png" alt="الهيئة العامة للإحصاء" data-i18n-alt="nav.gastat.alt" />
         <div class="separator"></div>
-        <img src="images/haris-logo.png" alt="حريص" style="height: 42px" />
+        <img src="images/haris-logo.png" alt="حريص" style="height: 42px" data-i18n-alt="nav.haris.alt" />
       </div>
       <div class="nav-links">
-        <a href="index.html">الرئيسية</a>
-        <a href="live-survey.html">إدخال مباشر</a>
-        <a href="batch-upload.html" class="active">التحقق من الملفات</a>
+        <a href="index.html" data-i18n="nav.home">الرئيسية</a>
+        <a href="live-survey.html" data-i18n="nav.liveSurvey">إدخال مباشر</a>
+        <a href="batch-upload.html" class="active" data-i18n="nav.batchUpload">التحقق من الملفات</a>
+        <button type="button" id="langToggle" class="lang-toggle">English</button>
       </div>
     </nav>
 
@@ -37,23 +45,23 @@
     <div class="page-container">
       <!-- Breadcrumb -->
       <div class="breadcrumb">
-        <a href="index.html">الرئيسية</a>
+        <a href="index.html" data-i18n="breadcrumb.home">الرئيسية</a>
         <span>‹</span>
-        <span>التحقق من الملفات</span>
+        <span data-i18n="batchUpload.breadcrumb.current">التحقق من الملفات</span>
       </div>
 
-      <h2 class="page-title">التحقق من الملفات</h2>
+      <h2 class="page-title" data-i18n="batchUpload.pageTitle">التحقق من الملفات</h2>
 
       <!-- Upload Panel -->
       <div class="panel" style="max-width: 700px; margin: 0 auto 32px">
         <div class="panel-header">
           <span>📊</span>
-          <span>رفع ملف CSV أو Excel</span>
+          <span data-i18n="batchUpload.panel.uploadTitle">رفع ملف CSV أو Excel</span>
         </div>
         <div class="panel-body">
           <div class="upload-zone" id="uploadZone">
             <div class="icon">📁</div>
-            <p>
+            <p data-i18n-html="batchUpload.upload.instructions">
               اسحب ملف <strong>.csv</strong> أو <strong>.xlsx</strong> هنا أو
               اضغط للاختيار
             </p>
@@ -68,7 +76,7 @@
           <div style="text-align: center; margin-top: 20px">
             <button class="btn btn-primary" id="processBtn" disabled>
               <span>🤖</span>
-              <span>معالجة عبر حريص</span>
+              <span data-i18n="batchUpload.btn.process">معالجة عبر حريص</span>
             </button>
           </div>
         </div>
@@ -77,7 +85,7 @@
       <!-- Spinner -->
       <div class="spinner" id="spinner">
         <div class="spinner-circle"></div>
-        <p style="color: var(--gastat-text-secondary)">
+        <p style="color: var(--gastat-text-secondary)" data-i18n="batchUpload.spinner.text">
           جاري معالجة الملف... يرجى الانتظار
         </p>
       </div>
@@ -87,16 +95,16 @@
         <div class="panel">
           <div class="panel-header">
             <span>📋</span>
-            <span>نتائج التحقق</span>
+            <span data-i18n="batchUpload.panel.resultsTitle">نتائج التحقق</span>
           </div>
           <div class="panel-body" style="overflow-x: auto">
             <table class="data-table">
               <thead>
                 <tr>
-                  <th>الصف</th>
-                  <th>معرف السجل (f_m_id)</th>
-                  <th>درجة المخاطر</th>
-                  <th>المشكلات المكتشفة</th>
+                  <th data-i18n="batchUpload.table.row">الصف</th>
+                  <th data-i18n="batchUpload.table.recordId">معرف السجل (f_m_id)</th>
+                  <th data-i18n="batchUpload.table.risk">درجة المخاطر</th>
+                  <th data-i18n="batchUpload.table.issues">المشكلات المكتشفة</th>
                 </tr>
               </thead>
               <tbody id="resultsBody"></tbody>
@@ -107,11 +115,12 @@
     </div>
 
     <!-- Footer -->
-    <div class="footer">
+    <div class="footer" data-i18n="footer.text">
       حريص &copy; 2025 — محرك التحقق الذكي من الاستبيانات | الهيئة العامة
       للإحصاء
     </div>
 
+    <script src="js/i18n.js"></script>
     <script src="js/batch-upload.js"></script>
   </body>
 </html>
